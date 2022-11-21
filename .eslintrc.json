@@ -1,71 +1,76 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "standard-with-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended",
-        "standard-with-typescript",
-        "plugin:prettier/recommended"
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
+  "rules": {
+    "react/jsx-one-expression-per-line": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "restrict-template-expressions": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-unused-expressions": "off",
+    "import/no-duplicates": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true
+      }
     ],
-    "overrides": [
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": "./tsconfig.json",
-      "ecmaFeatures": {
-          "jsx": true
-      },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-hooks",
-        "prettier"
-    ],
-    "rules": {
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "restrict-template-expressions": "off",
-      "react/jsx-props-no-spreading": "off",
-      "no-unused-expressions": "off",
-      "@typescript-eslint/consistent-type-assertions": "off",
-      "@typescript-eslint/strict-boolean-expressions": "off",
-      "@typescript-eslint/no-misused-promises": "off",
-      "@typescript-eslint/explicit-function-return-type": [
-        "error",
-        {
-          "allowExpressions": true
-        }
-      ],
-      "react/jsx-filename-extension": [
-        1,
-        {
+    "react/jsx-filename-extension": [
+      1,
+      {
         "extensions": [
           ".tsx"
         ]
-        }
-      ],
-      "no-use-before-define": "off",
-      "@typescript-eslint/no-use-before-define": [
-        "error"
-      ],
-      "react/react-in-jsx-scope": "off",
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "ts": "never",
-          "tsx": "never"
-        }
-     ],
-     "prettier/prettier": "error"
-    },
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
       }
+    ],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "react/react-in-jsx-scope": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "prettier/prettier": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
     }
+  }
 }
