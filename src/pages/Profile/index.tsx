@@ -38,19 +38,20 @@ const Profile: React.FC = () => {
           email: Yup.string()
             .required('E-mail obrigatório')
             .email('Digite um e-mail válido'),
-          old_password: Yup.string().when('old_password', {
-            is: true,
+          old_password: Yup.string(),
+          password: Yup.string().when('old_password', {
+            is: val => !!val.length,
             then: Yup.string().required('Campo obrigatório'),
             otherwise: Yup.string(),
           }),
-          password: Yup.string(),
-          password_confimation: Yup.string()
-            .when('password_confimation', {
-              is: true,
-              then: Yup.string().required('Campo obrigatório'),
-              otherwise: Yup.string(),
-            })
-            .oneOf([Yup.ref('password'), null], 'Senhas diferentes'),
+          password_confirmation: Yup.string().when('old_password', {
+            is: val => !!val.length,
+            then: Yup.string().required('Campo obrigatório'),
+            otherwise: Yup.string(),
+          })
+            .oneOf(
+              [Yup.ref('password'), null],
+              'Confirmação incorreta'),
         });
 
         await schema.validate(data, {
@@ -99,7 +100,7 @@ const Profile: React.FC = () => {
         });
       }
     },
-    [addToast, navigate],
+    [addToast, navigate, updateUser],
   );
 
   const handleAvatarChange = useCallback(
