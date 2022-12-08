@@ -68,7 +68,6 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     },
     [navigate],
   );
-  console.log(location.pathname)
   useEffect(() => {
     if (location.pathname === '/reset-password') {
       navigate(`/reset-password${location.search}`);
